@@ -1,0 +1,30 @@
+
+    标题：使用Tin快速安装TKY（全网最快)
+
+    正文内容：
+    <p>TYK是一个开源的轻量级 API 网关方案。
+这里提供一个不用下载依赖，不用考虑系统版本，小白也能操作的安装体验TYK的方法。</p>
+<p>先介绍下实现这一过程的工具：
+TeamCode Tin是一个能够快速从源码构建可运行实例的工具。Tin应用已将TYK所需的运行环境打包成容器，用户使用Tin应用即可直接在云端运行TYK。</p>
+<p>操作步骤：
+1.点击TKY的Tin链接
+<a href="https://www.teamcode.com/tin/clone?applicationId=268088907964952576">https://www.teamcode.com/tin/clone?applicationId=268088907964952576</a></p>
+<p>2.点击后进入TeamCode登录页面完成登录（已登录用户可跳过该步骤）。你可以选择邮件、手机号、google账户、微信以及QQ进行快速登录。
+<img src="//static.cnodejs.org/FmbKrcS-fIRYqX3QO5pN9FrpY3el" alt="image1.png">
+注册TeamCode的用户，每个月都有一定的免费额度可以使用。
+<img src="//static.cnodejs.org/Ftr_Pl8pjctOpkNepXBJijWxeEgd" alt="image2.png"></p>
+<ol>
+<li>点击 Clone，将TYK克隆到自己的Tin工作空间。
+<img src="//static.cnodejs.org/FujnWa3ljo0G_B50zwvVIK9hAu4s" alt="image13.png">
+4.点击 RUN NOW，Tin应用会立即运行。
+<img src="//static.cnodejs.org/FrJgP1Fzdnb9W9OSKTmBTyZZfdny" alt="image14.png"></li>
+<li>点击Endpoint Lists，可以看到访问TYK的入口。
+<img src="//static.cnodejs.org/FtjOo6VnZIUnA18c6TKOESOLQbB4" alt="image15.png"></li>
+<li>点击Endpoint入口（图中红框的链接），在新打开的窗口链接末尾添加 /keyless-test/ 即可立即访问TYK。
+<img src="//static.cnodejs.org/FtjLrpe2f4CcdOHHWeEZ0IwtzqKB" alt="image16.png"></li>
+<li>立即体验TYK
+<img src="//static.cnodejs.org/Fp7skN-Cplntz_ilAHPsmukm2T_9" alt="image17.png"></li>
+</ol>
+<p>如果你想同样快速的安装使用其他开源网关如APISIX，可以查看我的其他文章。如果你想跳过环境安装配置过程快速使用你喜欢的项目，可以在TeamCode官网查看Tin的详细使用指南 <a href="https://www.teamcode.com/docs/tin/create-tin%E3%80%82">https://www.teamcode.com/docs/tin/create-tin。</a></p>
+
+    

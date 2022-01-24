@@ -1,0 +1,32 @@
+
+    标题：Serverless今年会火吗？
+
+    正文内容：
+    <h3>一、Serverless相关的概念</h3>
+<p>Serverless又名无服务器,所谓无服务器并非是说不需要依赖和依靠服务器等资源,而是开发者再也不用过多考虑服务器的问题,可以更专注在产品代码上。</p>
+<p><strong>Serverless相关视频教程</strong>：<a href="https://www.bilibili.com/video/BV12h411Q7wz?p=2">https://www.bilibili.com/video/BV12h411Q7wz?p=2</a></p>
+<p>Serverless是一种软件系统架构的思想和方法，它不是软件框架、类库或者工具。它与传统架构的不同之处在于，完全由第三方管理，由事件触发，存在于无状态（Stateless）、暂存（可能只存在于一次调用的过程中）计算容器内。构建无服务器应用程序意味着开发者可以专注在产品代码上，而无须管理和操作云端或本地的服务器或运行时（运行时通俗的讲就是运行环境，比如nodejs环境，java环境，php环境）。Serverless真正做到了部署应用无需涉及基础设施的建设，自动构建、部署和启动服务。</p>
+<p><strong>通俗的讲：</strong>  Serverless 是构建和运行软件时不需要关心服务器的一种架构思想。老程序员都用过虚拟主机，刚开始学Serverless 你可以把它理解为虚拟主机的升级版本。
+<img src="//static.cnodejs.org/FrQYaZ4ed16DDtoKnmfMeyAR6cay" alt="图片1.png"></p>
+<p>虚拟主机已经是快被淘汰掉的上一代产物了。云计算涌现出很多改变传统IT架构和运维方式的新技术，比如虚拟机、容器、微服务，无论这些技术应用在哪些场景，降低成本、提升效率是云服务永恒的主题。Serverless的出现真正的解决了降低成本、提升效率的问题。它真正做到了弹性伸缩、高并发、按需收费、备份容灾、日志监控等。</p>
+<h3>二、传统模式和ServerLess模式下项目开发上线流程</h3>
+<p><strong>传统模式</strong></p>
+<p><img src="//static.cnodejs.org/FkAKf0N_-FFBJeLkfHAIRIGRaHWB" alt="图片2.png"></p>
+<p><strong>Serverless模式</strong></p>
+<p><img src="//static.cnodejs.org/FujjnTbCFWxsoRWvYvswpvsjvIYQ" alt="图片3.png"></p>
+<p>Serverless 正在改变未来软件开发的模式和流程
+<img src="//static.cnodejs.org/Fo0An9-HSBIKZzNJSYGnPVFmRD4A" alt="图片4.png"></p>
+<h3>三、Serverless 和ServerFul架构的区别</h3>
+<p><strong>1、传统的ServerFul 架构模式</strong>
+ServerFul 架构就是 n 台 Server 通过 网络通信 的 方式 协作在一起，也可以说 ServerFul 架构是基于 Server和 网络通信（分布式计算） 的 软件实现架构 ， Server 可以是 虚拟机 物理机 ，以及基于硬件实现的云的云服务器。
+<img src="//static.cnodejs.org/FtT0j6_rKqbHrH016dakycYIanzS" alt="图片5.png"></p>
+<p><strong>2、Serverless  架构模式</strong></p>
+<p>Serverless 的核心特点就是实现自动弹性伸缩和按量付费。
+<img src="//static.cnodejs.org/FnQRSZtlryaZQzuzlosJ0FDO2WxH" alt="图片6.png"></p>
+<p><strong>相比ServerLes相比ServerFul 有下面一些特点：</strong></p>
+<p><strong>资源分配：</strong> 在 Serverless 架构中，你不用关心应用运行的资源（比如服务配置、磁盘大小）只提供一份代码就行。</p>
+<p><strong>计费方式：</strong> 在 Serverless 架构中，计费方式按实际使用量计费（比如函数调用次数、运行时长），不按传统的执行代码所需的资源计费（比如固定 CPU）。计费粒度也精确到了毫秒级，而不是传统的小时级别。个别云厂商推出了每个月的免费额度，比如腾讯云提供了每个月40万GBs的资源使用额度和100万次调用次数的免费额度。中小企业的网站访问量不是特别大的话完全可以免费使用。</p>
+<p><strong>弹性伸缩</strong>： Serverless 架构的弹性伸缩更自动化、更精确，可以快速根据业务并发扩容更多的实例，甚至允许缩容到零实例状态来实现零费用，对用户来说是完全无感知的。而传统架构对服务器（虚拟机）进行扩容，虚拟机的启动速度也比较慢，需要几分钟甚至更久。</p>
+<p>Serverless相关视频教程：<a href="https://www.bilibili.com/video/BV12h411Q7wz?p=2">https://www.bilibili.com/video/BV12h411Q7wz?p=2</a></p>
+
+    

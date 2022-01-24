@@ -1,0 +1,27 @@
+
+    标题：如何通过TeamCode Tin快速访问Cloudreve?
+
+    正文内容：
+    <p>TeamCode Tin已将Cloudreve所需的云端运行环境打包成容器，用户点击即可直接在云端运行Cloudreve项目。完全跳过安装配置过程。
+用户操作步骤：</p>
+<ol>
+<li>点击Cloudreve Tin应用的链接
+<a href="https://www.teamcode.com/tin/clone?applicationId=270604044600766464">https://www.teamcode.com/tin/clone?applicationId=270604044600766464</a></li>
+<li>点击按钮后，进入TeamCode登录页面完成登录（已登录用户可跳过该步骤）。你可以选择邮件、手机号、google账户、微信以及QQ进行快速登录。
+<img src="//static.cnodejs.org/FjDfJKJTf6e8RFhcfsKEYI92NDst" alt="image11.png">
+2.1 注册TeamCode的用户，每个月都有免费计划可以使用。
+<img src="//static.cnodejs.org/Ftr_Pl8pjctOpkNepXBJijWxeEgd" alt="image12.png"></li>
+<li>点击 Clone，像fork github项目一样，将Cloudreve项目克隆到自己的Tin工作空间。
+<img src="//static.cnodejs.org/Fnhc4Q_BTyo2OY4Ts0tWSbI8Dtnf" alt="image13.png"></li>
+<li>点击 RUN NOW，Tin应用会立即运行。
+<img src="//static.cnodejs.org/Frvy5hZBU_kxDLsK9ixjnflUBGRx" alt="image14.png"></li>
+<li>点击Endpoint Lists，可以看到访问Cloudreve的入口。
+<img src="//static.cnodejs.org/FmSKtsIYwBu0N2GQJFTv20iwO4KS" alt="image15.png"></li>
+<li>点击图中红框的链接，即可立即访问Cloudreve。
+<img src="//static.cnodejs.org/FuR_vvhOvFbN9Vjg4vpib7ySRE-U" alt="image16.png"></li>
+<li>注册/登录后即可使用。
+<img src="//static.cnodejs.org/Fu6FZVMSuczduZbVHFnkiXCLy2wl" alt="image17.png">
+你也可以使用Tin工具快速打开其他项目，并跳过环境安装配置过程，具体操作指南可以在TeamCode官网查看 <a href="https://www.teamcode.com/docs/tin/create-tin">https://www.teamcode.com/docs/tin/create-tin</a></li>
+</ol>
+
+    

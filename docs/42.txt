@@ -1,0 +1,24 @@
+
+    标题：2021 Node.js 开发者报告 [问卷结果已出]
+
+    正文内容：
+    <p>感谢大家的鼎力支持，Node.js 开发者问卷调查报告已经出炉~~</p>
+<h3>点击 GitHub Page 地址查看报告： <a href="https://github.com/NoderSurvey/reporters">https://github.com/NoderSurvey/reporters</a></h3>
+<h4>原问卷内容</h4>
+<p>BFF、SSR、Serverless…… 随着技术的浪潮不断翻涌， Node.js 正在为我们逐渐带来更多的生产力。为了更好的了解 Node.js 生态现状，帮助大家：</p>
+<ul>
+<li>了解大家都是如何使用 Node.js？</li>
+<li>梳理这个语言的技术栈</li>
+<li>聚焦大家都在关注些什么？</li>
+<li>帮助开发者找准这个语言的定位（用来干什么的）</li>
+<li>找到目前生态所缺乏的以及被期望的内容</li>
+<li>辅助企业招聘</li>
+</ul>
+<p>欢迎您来参加 Node.js 开发者调查问卷，希望您能抽出一点时间，将您的感受和建议告诉我们，我们非常重视每位开发者的宝贵意见。</p>
+<p>问卷结束后我们会给留邮箱的同学第一时间电邮分析报告，期待您的参与！</p>
+<p>这大约需要花费您 3~5 分钟，链接请戳：<a href="https://www.wjx.cn/vj/Q08EYUi.aspx">https://www.wjx.cn/vj/Q08EYUi.aspx</a></p>
+<p>钉钉/微信等 app 扫码也可以进入问卷
+<img src="//static.cnodejs.org/FvONO4yEIfK-iF1mDbZlskoiiYY2" alt="qrcode_www.wjx.cn.png"></p>
+<p>本问卷目前由腾讯 &amp; 阿里前端发起，去年的问卷 <a href="https://nodersurvey.github.io/reporters/">https://nodersurvey.github.io/reporters/</a></p>
+
+    

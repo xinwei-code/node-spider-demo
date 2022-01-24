@@ -1,0 +1,50 @@
+
+    标题：aowin  之 vue的生命周期
+
+    正文内容：
+    <h2>生命周期</h2>
+<ul>
+<li>事物从出生到死亡的过程</li>
+<li>Vue实例从创建到销毁的过程 ，这些过程中会伴随着一些函数的自调用。我们称这些函数为钩子函数</li>
+</ul>
+<p>常用的钩子函数</p>
+<table>
+<thead>
+<tr>
+<th>beforeCreate</th>
+<th>在实例初始化之后，数据观测和事件配置之前被调用 此时data 和 methods 以及页面的DOM结构都没有初始化   什么都做不了</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>created</td>
+<td>在实例创建完成后被立即调用此时data 和 methods已经可以使用  但页面还没有渲染出来</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>在挂载开始之前被调用   此时页面上还看不到真实数据 只是一个模板页面而已</td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>el被新创建的vm.$el替换，并挂载到实例上去之后调用该钩子。  数据已经真实渲染到页面上  在这个钩子函数里面我们可以使用一些第三方的插件</td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>数据更新时调用，发生在虚拟DOM打补丁之前。页面上数据还是旧的</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>由于数据更改导致的虚拟DOM重新渲染和打补丁，在这之后会调用该钩子。 页面上数据已经替换成最新的</td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td>实例销毁之前调用</td>
+</tr>
+<tr>
+<td>destroyed</td>
+<td>实例销毁后调用</td>
+</tr>
+</tbody>
+</table>
+
+    

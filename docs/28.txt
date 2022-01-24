@@ -1,0 +1,30 @@
+
+    标题：使用Tin快速安装Swagger-UI（两分钟以内！）
+
+    正文内容：
+    <p>Swagger UI 允许任何人（无论是开发团队还是客户）查看可视化 API 资源并与之交互。它根据OpenAPI（以前称为 Swagger）规范自动生成，带有可视化文档，便于后端实现和客户端使用。</p>
+<p>这里提供一个不用下载依赖，不用考虑系统版本，小白也能操作的安装体验Swagger-UI的方法。</p>
+<p>先介绍下实现这一过程的工具：
+TeamCode Tin是一个能够快速从源码构建可运行实例的工具。Tin应用已将Swagger-UI所需的运行环境打包成容器，用户使用Tin应用即可直接在云端运行Swagger-UI。</p>
+<p>操作步骤：
+1.点击Swagger-UI的Tin链接
+<a href="https://www.teamcode.com/tin/clone?applicationId=270139780752936960">https://www.teamcode.com/tin/clone?applicationId=270139780752936960</a></p>
+<p>2.点击后进入TeamCode登录页面完成登录（已登录用户可跳过该步骤）。你可以选择邮件、手机号、google账户、微信以及QQ进行快速登录。
+<img src="//static.cnodejs.org/FmbKrcS-fIRYqX3QO5pN9FrpY3el" alt="image1.png">
+注册TeamCode的用户，每个月都有一定的免费额度可以使用。
+<img src="//static.cnodejs.org/Ftr_Pl8pjctOpkNepXBJijWxeEgd" alt="image2.png"></p>
+<ol>
+<li>点击 Clone，将Swagger-UI克隆到自己的Tin工作空间。
+<img src="//static.cnodejs.org/Fju9zOZ-ERK4KN-uMBEbe4rUycT_" alt="image3.png">
+4.点击 RUN NOW，Tin应用会立即运行。
+<img src="//static.cnodejs.org/Fjd6dE3IqU_5REEdUWKZZ4c_u6fx" alt="image4.png"></li>
+<li>点击Endpoint Lists，可以看到访问Swagger-UI的入口。
+<img src="//static.cnodejs.org/FhHOrUysc7q2YwZjiiyHyNaqjVYM" alt="image5.png"></li>
+<li>点击Endpoint入口（图中红框的链接），即可立即访问Swagger-UI。
+<img src="//static.cnodejs.org/Fo3Wr162kk1PRG2odJuUQfRfMgLD" alt="image6.png"></li>
+<li>立即体验Swagger-UI。
+<img src="//static.cnodejs.org/Fr4ix55-jobJfOHHgMVxmuN4YkZp" alt="image7.png"></li>
+</ol>
+<p>如果你想同样快速的安装使用其他开源项目，跳过环境安装配置过程，可以在TeamCode官网查看Tin的详细使用指南 <a href="https://www.teamcode.com/docs/tin/create-tin%E3%80%82">https://www.teamcode.com/docs/tin/create-tin。</a></p>
+
+    

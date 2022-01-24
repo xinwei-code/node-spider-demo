@@ -1,0 +1,199 @@
+
+    标题：puppeteer 的实现原理
+
+    正文内容：
+    <p>hi all，分享一个 puppeteer 的 debug, 更多可以持续关注 🌟 <a href="https://github.com/xiaoxiaojx/blog/issues/21">github | blog</a> 🌟</p>
+<p><img src="https://user-images.githubusercontent.com/23253540/141687452-54214127-5297-47aa-907b-1ca99580e5fb.png" alt="image"></p>
+<h2>背景</h2>
+<p>有同学吐槽整个 CI/CD 下来时间太长了, 其中 e2e 测试节点就花了 10 分钟 🐢</p>
+<p>现在我们采用的是 puppeteer 进行的一个自动化 e2e 测试, 该节点是在正式发布前, 预发发布后。</p>
+<p>作为一个所有项目都必须要通过的一个节点, 它主要的功能是读取项目中的所有路由页面进行一个白屏测试与检查是否有 console.error 、网络错误等。</p>
+<h2>排查</h2>
+<p>收到反馈后首先是进行排查, 发现该 spa 项目共 96 个 ⚠️ 路由页面, 而只会开启 ⚠️ 一个  puppeteer browser 实例去逐个对页面测试导致了耗时过长。</p>
+<p>一开始也没有着急去改, 而是问第一版开发 e2e 的大佬, 为何没有开启多个 browser 实例去并行完成这些路由页面的任务, 得到的反馈是当时项目还比较小, 就没有做这方面的优化了。</p>
+<h2>解决</h2>
+<p>看样子多个实例不是因为有坑才没做, 当时可能只是不想 Overdesign。解决这个问题比较简单把收到的若干个任务进行分组, 然后去开启多个 browser 实例去并行完成这些任务即可。</p>
+<p><img src="https://user-images.githubusercontent.com/23253540/141813341-7e983b3f-cfe3-455e-9d8f-1ccc340f787e.png" alt="未命名文件 (1)"></p>
+<blockquote>
+<p>如上图, 最后分为 5 个实例去并发完成, 将该节点耗时减少到了 3分25 秒。</p>
+</blockquote>
+<p>这里说明的一点分的组不是越多越好, 比如 96 个任务每组最大 20个分为 5 组, 总时长并不会减少 5 倍。因为 browser 实例越多占用的系统资源也会越多。这有点像小学求最优解的题, 随着分组数量(x 轴)的增长, 总耗时(y 轴)会类似于一个抛物线。</p>
+<h2>puppeteer</h2>
+<p>其实 puppeteer 已经应用在我们很多的前端领域, 如上面所说的 e2e 测试, 其他诸如爬虫、页面定时巡检、页面性能监控都是使用的 puppeteer。</p>
+<p>本次就很快解决了这个问题, 出于好奇也粗略的去学习了一下 puppeteer 的实现原理。</p>
+<pre class="prettyprint"><code>const puppeteer = require('puppeteer');
+
+(async () =&gt; {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://example.com');
+  await page.screenshot({ path: 'example.png' });
+
+  await browser.close();
+})();
+</code></pre><h3>新的 browser 实例实现</h3>
+<ol>
+<li>通过 childProcess.spawn 运行 chromium 的可执行文件, 打开一个 chromium browser</li>
+<li>绑定一些事件监听</li>
+</ol>
+<pre class="prettyprint"><code>// src/node/BrowserRunner.ts
+
+start(options: LaunchOptions): void {
+    //...
+
+    this.proc = childProcess.spawn(
+      this._executablePath,
+      this._processArguments,
+      {
+        // On non-windows platforms, `detached: true` makes child process a
+        // leader of a new process group, making it possible to kill child
+        // process tree with `.kill(-pid)` command. @see
+        // https://nodejs.org/api/child_process.html#child_process_options_detached
+        detached: process.platform !== 'win32',
+        env,
+        stdio,
+      }
+    );
+    
+    // ...
+    
+    this._listeners = [
+      helper.addEventListener(process, 'exit', this.kill.bind(this)),
+    ];
+    if (handleSIGINT)
+      this._listeners.push(
+        helper.addEventListener(process, 'SIGINT', () =&gt; {
+          this.kill();
+          process.exit(130);
+        })
+      );
+    if (handleSIGTERM)
+      this._listeners.push(
+        helper.addEventListener(process, 'SIGTERM', this.close.bind(this))
+      );
+    if (handleSIGHUP)
+      this._listeners.push(
+        helper.addEventListener(process, 'SIGHUP', this.close.bind(this))
+      );
+  }
+</code></pre><h3>browser 的启动流程</h3>
+<ol>
+<li>通过上面的 start 函数中赋值的 this.proc 获取新打开的 chromium 进程句柄, 即该函数的入参 browserProcess</li>
+<li>通过 readline.createInterface 以及 browserProcess.stderr 获取 chromium 进程的日志输出, 这里是通过 readline 去获取子进程的输出也是一个比较少见的用法</li>
+<li>当监听到 /^DevTools listening on (ws://.*)$/ 匹配的日志后, 即算获取到了 chromium 进程上的 WebSocket 运行的 url</li>
+</ol>
+<pre class="prettyprint"><code>// src/node/BrowserRunner.ts
+
+function waitForWSEndpoint(
+  browserProcess: childProcess.ChildProcess,
+  timeout: number,
+  preferredRevision: string
+): Promise&lt;string&gt; {
+  return new Promise((resolve, reject) =&gt; {
+    const rl = readline.createInterface({ input: browserProcess.stderr });
+    let stderr = '';
+    const listeners = [
+      helper.addEventListener(rl, 'line', onLine),
+      helper.addEventListener(rl, 'close', () =&gt; onClose()),
+      helper.addEventListener(browserProcess, 'exit', () =&gt; onClose()),
+      helper.addEventListener(browserProcess, 'error', (error) =&gt;
+        onClose(error)
+      ),
+    ];
+    const timeoutId = timeout ? setTimeout(onTimeout, timeout) : 0;
+
+    /**
+     * @param {!Error=} error
+     */
+    function onClose(error?: Error): void {
+      cleanup();
+      reject(
+        new Error(
+          [
+            'Failed to launch the browser process!' +
+              (error ? ' ' + error.message : ''),
+            stderr,
+            '',
+            'TROUBLESHOOTING: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md',
+            '',
+          ].join('\n')
+        )
+      );
+    }
+
+    function onTimeout(): void {
+      cleanup();
+      reject(
+        new TimeoutError(
+          `Timed out after ${timeout} ms while trying to connect to the browser! Only Chrome at revision r${preferredRevision} is guaranteed to work.`
+        )
+      );
+    }
+
+    function onLine(line: string): void {
+      stderr += line + '\n';
+      const match = line.match(/^DevTools listening on (ws:\/\/.*)$/);
+      if (!match) return;
+      cleanup();
+      resolve(match[1]);
+    }
+
+    function cleanup(): void {
+      if (timeoutId) clearTimeout(timeoutId);
+      helper.removeEventListeners(listeners);
+    }
+  });
+</code></pre><h3>与 browser 通信</h3>
+<p>上面 waitForWSEndpoint 函数获取到新打开的 chromium 进程的 WebSocket 监听的 url 后, 这里就通过 ws 这个 npm 包生成了一个  NodeWebSocket。</p>
+<p><strong><em>到这里我们知道了提供若干个 api 的 puppeteer 原来是一个 WebSocket 客户端, 另一端是 chromium 进程进行真实的操作。</em></strong></p>
+<pre class="prettyprint"><code>// src/node/NodeWebSocketTransport.ts
+
+import NodeWebSocket from 'ws';
+
+export class NodeWebSocketTransport implements ConnectionTransport {
+  static create(url: string): Promise&lt;NodeWebSocketTransport&gt; {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const pkg = require('../../../../package.json');
+    return new Promise((resolve, reject) =&gt; {
+      const ws = new NodeWebSocket(url, [], {
+        followRedirects: true,
+        perMessageDeflate: false,
+        maxPayload: 256 * 1024 * 1024, // 256Mb
+        headers: {
+          'User-Agent': `Puppeteer ${pkg.version}`,
+        },
+      });
+
+      ws.addEventListener('open', () =&gt;
+        resolve(new NodeWebSocketTransport(ws))
+      );
+      ws.addEventListener('error', reject);
+    });
+  }
+</code></pre><h3>通信协议</h3>
+<p>以浏览器新打开一个页面 newPage 函数的实现为例, 可知是通过 NodeWebSocket 发送了一个 ‘Target.createTarget’ 事件, 可传参数见下面的 DevTools Protocol</p>
+<pre class="prettyprint"><code>//src/common/Browser.ts
+
+newPage(): Promise&lt;Page&gt; {
+    return this._browser._createPageInContext(this._id);
+}
+  
+async _createPageInContext(contextId?: string): Promise&lt;Page&gt; {
+    const { targetId } = await this._connection.send('Target.createTarget', {
+      url: 'about:blank',
+      browserContextId: contextId || undefined,
+    });
+    const target = this._targets.get(targetId);
+    assert(
+      await target._initializedPromise,
+      'Failed to create target for page'
+    );
+    const page = await target.page();
+    return page;
+  }
+</code></pre><p>这里用来操控 chromium 的协议都可以在这里查阅 <a href="https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget">Chrome DevTools Protocol</a></p>
+<p><img src="https://user-images.githubusercontent.com/23253540/141687355-5c8e4971-117b-4bef-acf5-0491ea1a228b.png" alt="image"></p>
+<h2>小结</h2>
+<p>发现问题后最好先追本溯源, 以免走前人踩过的坑。其次有多余的时间也不妨探究一下其实现原理, 技术其实都是相通的, 看的多了总是能举一反三 ~</p>
+
+    

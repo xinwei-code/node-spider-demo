@@ -1,0 +1,144 @@
+
+    标题：Uncaught ReferenceError: exports is not defined 问题记录
+
+    正文内容：
+    <p><img src="https://user-images.githubusercontent.com/23253540/150164484-1b868d2b-a9fa-45f2-882f-bd77d1942701.png" alt="image">
+原文链接: <a href="https://github.com/xiaoxiaojx/blog/issues/27">https://github.com/xiaoxiaojx/blog/issues/27</a></p>
+<h2>问题定位</h2>
+<p>报错信息如下</p>
+<pre class="prettyprint language-bash"><code>Uncaught ReferenceError: exports is not defined
+    at Module.&lt;anonymous&gt; (browser.js:13:1)
+    at Module../node_modules/.pnpm/abort-controller@3.0.0/node_modules/abort-controller/dist/abort-controller.js (abort-controller.ts:62:1)
+    at __webpack_require__ (bootstrap:84:1)
+    at Object.&lt;anonymous&gt; (polyfill.js:4:1)
+    at Object../node_modules/.pnpm/abort-controller@3.0.0/node_modules/abort-controller/polyfill.js (polyfill.js:21:1)
+    at __webpack_require__ (bootstrap:84:1)
+</code></pre><p>首先查看 node_modules 中 abort-controller 包的代码, 找到报错的地方, 为下图中红色下划线标出的有 exports 变量这一行的代码</p>
+<pre class="prettyprint language-js"><code>// abort-controller/dist/abort-controller.js
+</code></pre><p><img src="https://user-images.githubusercontent.com/23253540/150134616-4bf6f483-682a-4b9e-a0d1-f8e7c00db8e6.png" alt="image">
+仔细查看发现代码并无明显语法错误, 报 exports is not defined 不合常理</p>
+<p>正常来说 webpack 打包过后会把该模块的代码放在一个闭包函数中去运行, 通过函数参数中传入 module, exports 等变量, 运行完成后 module, exports 的值即为该模块的导出来的值, 和 Node.js 编译运行一个 js 文件模块的原理是类似的, 如下所示👇
+<img src="https://user-images.githubusercontent.com/23253540/150135046-22452239-cf28-45f5-9034-af94620f12bd.png" alt="0b044a8c6c1554aa6447b7331906cb8534dea5df"></p>
+<p>但是这里报错的地方的闭包函数却不长上面那样, 区别是该闭包函数传入的参数值是 <strong>webpack_exports</strong> 而非 exports ?!
+<img src="https://user-images.githubusercontent.com/23253540/150136078-f1aff4df-086d-48b4-aace-4bba88072e62.png" alt="9d2daf8013a79151faa421b2eb55405962fb10b9">
+所以代码在浏览器运行时该模块作用域内没有 exports, 就出现了本文开始的错误信息 exports is not defined ❌</p>
+<pre class="prettyprint language-js"><code>// abort-controller/dist/abort-controller.js
+
+exports.AbortController = AbortController;
+</code></pre><p>🤔 那么是什么条件决定了形参何时命名为 <strong>webpack_exports</strong>, 何时为 exports 了? 接着去探寻一下 webpack 这部分实现的代码</p>
+<p>通过查看 webpack 的代码我们发现 isHarmony 变量的值为 true 则会命名为 <strong>webpack_exports</strong>, isHarmony 为 true 的条件是当前有 import、export 等 ES-Module 语句时, 可想而知 CommonJs 则会命名为 exports</p>
+<pre class="prettyprint language-js"><code>// webpack/lib/dependencies/HarmonyDetectionParserPlugin.js
+
+module.exports = class HarmonyDetectionParserPlugin {
+	apply(parser) {
+		parser.hooks.program.tap("HarmonyDetectionParserPlugin", ast =&gt; {
+			const isHarmony =
+				isStrictHarmony ||
+				ast.body.some(
+					statement =&gt;
+						statement.type === "ImportDeclaration" ||
+						statement.type === "ExportDefaultDeclaration" ||
+						statement.type === "ExportNamedDeclaration" ||
+						statement.type === "ExportAllDeclaration"
+				);
+			if (isHarmony) {
+				// ...
+				module.buildInfo.exportsArgument = "__webpack_exports__";
+
+			}
+		});
+</code></pre><p>这也容易理解, 当发现该文件是 ES-Module 模块时, 没有必要传入 exports, 因为 CommonJs 导出模块变量时才会去 exports 上面去赋值导出变量, 所以 ES-Module 模块里面 exports 变量不是一个关键词, 用户可以像普通变量一样使用</p>
+<p>🤯 不过我们回头看一下, 报错的 abort-controller 包在 node_modules 中的代码不就是 CommonJs 规范的吗, 按理来说此时 isHarmony 为 false, 函数的入参是 exports 才对!</p>
+<blockquote>
+<p>💡 这里要补充的知识是像 create-react-app、next、jest 等 Node 工具都默认不会让 babel 去处理 node_modules 中包的代码, 因为按规范, 每个包发布到 npm 中时都最好是 es5 等兼容性良好的代码, 而非 jsx, ts 等需要二次编译的代码</p>
+</blockquote>
+<p>而报错的该包因为如下有 const 语句的 es6 代码 ⚠️   为了兼容低版本的浏览器, 我们的脚手架中开了一个口子去白名单开放编译 node_modules 中的不规范的包</p>
+<pre class="prettyprint language-js"><code>// abort-controller/dist/abort-controller.js
+
+class AbortController {
+// ...
+}
+/**
+ * Associated signals.
+ */
+const signals = new WeakMap();
+</code></pre><p>既然经过了一次 babel-loader, 那么我们需要知道 abort-controller 代码经过 babel-loader 编译后交给 webpack 处理时的代码长什么样子</p>
+<p>接着看看我们的 babel 配置的 preset 使用的是 babel-preset-react-app</p>
+<pre class="prettyprint language-js"><code>// webpack 的配置
+
+{
+      loader: require.resolve('babel-loader'),
+      options: {
+        babelrc: false,
+        presets: [require.resolve('babel-preset-react-app')],
+        plugins: [
+          // ...
+        ],
+        cacheDirectory: !isProd
+      }
+</code></pre><p>深入 babel-preset-react-app 的代码, 发现其内置使用了 <a href="/user/babel">@babel</a>/plugin-transform-runtime 插件</p>
+<pre class="prettyprint language-js"><code>// babel-preset-react-app/create.js
+
+module.exports = function(api, opts, env) {
+      // Polyfills the runtime needed for async/await, generators, and friends
+      // https://babeljs.io/docs/en/babel-plugin-transform-runtime
+      [
+        require('[@babel](/user/babel)/plugin-transform-runtime').default,
+        {
+          // ...
+        },
+};
+</code></pre><p>transform-runtime 的作用是当检测到该文件代码中有 es6 等高语法的代码时, 会通过在文件顶部添加 import 等语句动态添加对应的 polyfill, 达到按需添加 polyfill 的作用</p>
+<p>相比直接把如下的 _classCallCheck 等实现的代码直接插入到文件头部, 通过 import 一行代码动态添加能够有效避免每个文件中都有这些重复的 polyfill 具体实现的代码, 所以使用 transform-runtime 也算一个常见的优化手段</p>
+<p><img src="https://user-images.githubusercontent.com/23253540/150140716-6ee33c90-fdf7-4e6c-8f2e-c04e8592a2a0.png" alt="65c96974a8d723dff68bb033c70abb1c52df4ecb"></p>
+<p>😯 到这里我们知道了 abort-controller 这个包在 node_modules 中的代码虽然是 CommonJs, 但是通过 transform-runtime 给其添加的 import 语句, 使得 webpack 判断它为 ES-Module 模块了</p>
+<p>接着我们只能探索 transform-runtime 是否能通过 require 来动态添加 polyfill 了, 这样 webpack 也不会误判了…</p>
+<p>通过查看插入 import 语句实现的代码，此时我们是因为进入了下图 isModuleForBabel 为 true 的逻辑, 而 builder.import() 显然就是添加一个 import AST 的函数实现。如果能进入 else 的逻辑使用上 builder.require(); 逻辑不就解决了我们的问题 !</p>
+<pre class="prettyprint language-js"><code>// [@babel](/user/babel)/helper-module-imports/lib/import-injector.js
+</code></pre><p><img src="https://user-images.githubusercontent.com/23253540/150141909-77321d19-0b21-46aa-a895-9b5a185bf0ff.png" alt="image"></p>
+<p>然而 transform-runtime 调用的 _helperModuleImports.addDefault 函数传的参数尽然是写死的  😓, 我们想通过传不同参进入 else 逻辑的想法落空,  不得不让我们怀疑是 transform-runtime 的一个 bug</p>
+<pre class="prettyprint language-js"><code>// [@babel](/user/babel)/plugin-transform-runtime/lib/index.js
+
+this.addDefaultImport = (source, nameHint, blockHoist) =&gt; {
+  const cacheKey = (0, _helperModuleImports.isModule)(file.path);
+  const key = `${source}:${nameHint}:${cacheKey || ""}`;
+  let cached = cache.get(key);
+
+  if (cached) {
+    cached = _core.types.cloneNode(cached);
+  } else {
+    cached = (0, _helperModuleImports.addDefault)(file.path, source, {
+      importedInterop: "uncompiled",
+      nameHint,
+      blockHoist
+    });
+    cache.set(key, cached);
+  }
+
+  return cached;
+};
+},
+</code></pre><h2>兄弟问题</h2>
+<p>顺带一提下面这个问题造成的原因是一样的</p>
+<pre class="prettyprint language-bash"><code>Uncaught TypeError: Cannot assign to read only property 'exports' of object '#&lt;Object&gt;'
+    at Module.&lt;anonymous&gt; (App.js:46:1)
+    at Module../src/components/App.js (App.js:49:1)
+    at __webpack_require__ (bootstrap:774:1)
+    at fn (bootstrap:129:1)
+    at Module../src/index.js (index.js:2:1)
+    at __webpack_require__ (bootstrap:774:1)
+    at fn (bootstrap:129:1)
+    at Object.1 (index.scss:1:1)
+    at __webpack_require__ (bootstrap:774:1)
+    at bootstrap:951:1
+</code></pre><p>何时会报上面那个错误, 看一下下面这个例子就知道了, 只是因为不同版本抛错的方式有所不同
+<img src="https://user-images.githubusercontent.com/23253540/150174192-6ae149de-323a-404d-8fed-24b292ad0b9b.png" alt="image"></p>
+<h2>问题解决</h2>
+<ol>
+<li>尝试从源头 <a href="/user/babel">@babel</a>/plugin-transform-runtime 解决</li>
+<li>对 abort-controller 这些不太规范的包使用单独的 babel 配置</li>
+<li>自己写代码时一个文件不要同时有 import 和 modules.exports 语句</li>
+</ol>
+<p>PS: 本次记录之后再也不怕被追问这俩问题的原因了 😼</p>
+
+    

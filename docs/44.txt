@@ -1,0 +1,13 @@
+
+    标题：如何在容器内获取分配到的 cpu 资源数量
+
+    正文内容：
+    <p>我发现在 Pod 中通过 Node api 获取到的 cpu_length 是宿主机的，而不是分配给该容器的</p>
+<pre class="prettyprint language-js"><code>require('os').cpus().length
+</code></pre><p>于是搜索了一下如何在容器内获取分配到的 cpu 资源数量，只找到了 <a href="https://kubernetes.io/zh/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#%E7%94%A8-container-%E5%AD%97%E6%AE%B5%E4%BD%9C%E4%B8%BA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC">kubernetes 用 Container 字段作为环境变量的值</a> 文档, 即把设置的 resources 的数据通过 MY_CPU_LIMIT 环境变量的形式传递到容器内。</p>
+<p>所以问一下大佬们有没有其他的解决办法 ~</p>
+<blockquote>
+<p>2021-01-07 更新，该问题先存档记录在 <a href="https://github.com/xiaoxiaojx/blog/issues/25">Pod 中获取到错误的 CPUS</a></p>
+</blockquote>
+
+    

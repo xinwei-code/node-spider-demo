@@ -1,0 +1,12 @@
+
+    标题：WebGPU和WebGPU着色语言首个公开工作草案发布
+
+    正文内容：
+    <p>Web前端们又有新东西要学了。
+这可是最最基础的东西，不要天天React、Vue这些框架了。
+那些可学不完的~~看看思想就好。</p>
+<p><a href="https://github.com/gpuweb/gpuweb/wiki/Implementation-Status">https://github.com/gpuweb/gpuweb/wiki/Implementation-Status</a></p>
+<p>WebGPU 源于现代 3D/计算概念，但并不直接基于 Vulkan 或 Direct3D 等，与基于 OpenGL（ES） 的 WebGL 不同。WebGPU 拥有广泛的行业支持和兴趣，可以在所有主要平台上得到支持，而不是明确地与 Metal、Direct3D 或其他厂商的特定 API 相联系。</p>
+<p>WebGPU还包括WebGPU着色语言（WGSL），可以很容易地翻译成SPIR-V。WebGPU和WebGPU着色语言的第一个公开工作草案可以从W3C.org上获得。</p>
+
+    

@@ -1,0 +1,38 @@
+
+    标题：如何使用Tin快速搭建Gitlab-ce（史上最简单方法）
+
+    正文内容：
+    <p>GitLab是Git代码版本管理平台，相比于GitHub，GitLab还免费支持私人仓库。GitLab-ce是gitlab的开源版本。目前网上Gitlab-ce的安装方法有很多，但大同小异都需要安装各种依赖配置，且对系统版本还有要求（如下图所示）
+<img src="//static.cnodejs.org/FgF-t7LdnZvi3uk72xITRVqzfPjZ" alt="image1.png">
+这里提供一个不用下载依赖，不用考虑系统版本，百分之百成功安装Gitlab-ce的方法。</p>
+<p>TeamCode Tin是一个能够快速从源码构建可运行实例的工具，已将Gitlab-ce所需的运行环境打包成容器，用户点击即可直接在云端运行。</p>
+<p>用户操作步骤：
+1.点击Gitlab-ce的Tin链接
+<a href="https://www.teamcode.com/tin/clone?applicationId=270871676042256384">https://www.teamcode.com/tin/clone?applicationId=270871676042256384</a></p>
+<p>2.点击后进入TeamCode登录页面完成登录（已登录用户可跳过该步骤）。你可以选择邮件、手机号、google账户、微信以及QQ进行快速登录。
+<img src="//static.cnodejs.org/FmbKrcS-fIRYqX3QO5pN9FrpY3el" alt="image2.png"></p>
+<p>注册TeamCode的用户，每个月都有一定的免费额度可以使用。
+<img src="//static.cnodejs.org/Ftr_Pl8pjctOpkNepXBJijWxeEgd" alt="image3.png"></p>
+<ol>
+<li>点击 Clone，将Gitlab-ce克隆到自己的Tin工作空间。
+<img src="//static.cnodejs.org/Fj-U7-L_QlohrvHftlfZ9-MscyDK" alt="image4.png"></li>
+</ol>
+<p>4.点击 RUN NOW，Tin应用会立即运行。
+<img src="//static.cnodejs.org/FjhZxF6PVGxLIyY6y6X7lehtg7pB" alt="image5.png"></p>
+<ol>
+<li>
+<p>点击Endpoint Lists，可以看到访问Gitlab-ce的入口。
+<img src="//static.cnodejs.org/Fn7isv84Mq3VQbgjDJ44Aat8_dI8" alt="image6.png"></p>
+</li>
+<li>
+<p>点击Endpoint入口（图中红框的链接），即可立即访问Gitlab-ce。
+<img src="//static.cnodejs.org/Fkr2qrJLxXDzQi9IE7iCDb0DjBP9" alt="image7.png"></p>
+</li>
+<li>
+<p>你已成功安装Gitlab-ce，可以开始使用了。（是不是有一种做了火箭的感觉！）
+<img src="//static.cnodejs.org/Fu9CXYKCWLbqraNOhwz12ydF9qIb" alt="image8.png"></p>
+</li>
+</ol>
+<p>你也可以使用Tin工具快速打开其他开源项目，跳过环境安装配置过程，走向人生巅峰。具体操作指南可以在TeamCode官网查看 <a href="https://www.teamcode.com/docs/tin/create-tin%E3%80%82">https://www.teamcode.com/docs/tin/create-tin。</a></p>
+
+    

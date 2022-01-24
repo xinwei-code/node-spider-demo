@@ -1,0 +1,43 @@
+
+    标题：基于 Electron 的 Rubick 2.4k star 啦，同步更新新功能！
+
+    正文内容：
+    <h2>为什么要做 Rubick</h2>
+<p>其实做 <code>Rubick 1.x</code> 的初衷就是解决自己的问题的：特别需要一款支持自定义插件的桌面端应用来简化使用者安装庞大桌面端应用的臃肿。而且涉及到数据安全的问题，插件只能在公司内网贡献，无法对外公开。</p>
+<p>在 <code>Rubick 2.0</code> 的阶段，重新设计了一套基于 <code>npm</code> 的插件管理体系，让开发者更加便利的加入插件的开发。拓展了插件的边界和种类，开发者可以开发 <code>Rubick</code> 系统插件，此时的 <code>Rubick</code> 就成了一个 <code>electron</code> 高级封装，开发者可以高自由的实现系统能力而不局限余 <code>openAPI</code> 也不局限于必须搜索呼起使用，只要 <code>Rubick</code> 在运行，插件就在运行。</p>
+<h2>Rubick 的自我介绍</h2>
+<p><code>Rubick</code> 是基于 <code>electron</code> 的开源工具箱，基于 <code>npm</code> 插件管理的方式自由集成丰富插件。<code>Rubick(拉比克)</code> 出处是 <code>dota</code> 里面的英雄之一，其核心技能是插件化使用其他英雄的技能，用完即走。非常符合本工具的设计理念，所以取名 <code>Rubick</code>。</p>
+<h2>核心技能展示</h2>
+<h3>1. 基于 npm 的方式管理插件</h3>
+<p>刚开始设计插件管理的方式是将插件打包成 <code>.zip</code> 的压缩包，然后再将压缩包上传到 <code>CDN</code> 上，点击安装再 <code>download</code> 下来进行解压。但是这样有几个弊端</p>
+<ol>
+<li>需要一个数据存储服务器，来存储这些压缩包文件，那么这需要一笔费用，这对于一个开源开发者来说很难维持下去。</li>
+<li>打包机制和解压机制繁琐，对开发者不友好</li>
+</ol>
+<p>直到我看到 PicGo 作者关于 PicGo 插件设计思路的文章，我突然觉得基于 <code>npm</code> 的包管理方式不正是我想要的吗，既轻量有省了一笔服务器存储开销： <a href="https://molunerfinn.com/electron-vue-6/">PicGo 插件设计</a> 但这其实也有另一个问题，因为是基于 <code>npm</code> 的管理模式，所以需要开发者提前安装 <code>node</code> 环境，才可以使用 <code>npm</code>。但这在目前是可以接受的，因为 <code>Rubick</code> 的目前定位也是为开发者服务的开源工具箱。</p>
+<p>当你点安装插件的时候，其实执行的就是 <code>npm install xxx</code>.</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f065c6df604e4447a242a48ec3fde747~tplv-k3u1fbpfcp-watermark.image?" alt="QQ20211222-153720.gif"></p>
+<h3>2. 内网使用</h3>
+<p><strong>如果把插件发布到公网 <code>npm</code> 如果不符合您的公司安全要求，<code>rubick</code> 支持内网私有源和私有插件库，如果您需要内网部署使用，可以自行配置以下规则。</strong></p>
+<p><code>rubick</code> 依赖 <code>npm</code> 仓库做插件管理，依赖 <code>gitee</code> 做插件数据存储，所以如果要进行内网部署，主要需要替换这2个设置。详细设置：
+<code>插件市场 -&gt; 设置 -&gt; 内网部署设置</code></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1319b177fb544017ae10b4a703e8efa6~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h4>1. 替换 npm 源</h4>
+<p>插件发布到私有 <code>npm</code> 源即可。</p>
+<h4>2. 替换 <code>gitee</code> 源为内网 <code>gitlab</code>: database url</h4>
+<ul>
+<li>clone 下载 rubick 插件库：<a href="https://gitee.com/monkeyWang/rubick-database">https://gitee.com/monkeyWang/rubick-database</a></li>
+<li>提交仓库到私有 <code>gitlab</code> 库。</li>
+</ul>
+<p>替换格式：<code>https://gitlab.xxx.com/api/v4/projects/{projectId}/repository/files/</code> 。因为接口为 <code>gitlab openAPI</code>，所以需要填写仓库 <code>access_token</code></p>
+<h3>3. 系统插件能力</h3>
+<p><code>Rubick</code> 另一个最大的能力就是支持系统插件，有了系统插件，我们就可以不用受限于必须搜索使用插件了，只要 <code>rubick</code> 在运行，插件就在运行。这对于一些特殊的场景来说是非常有价值的事情，比如我要实现一个定时提醒喝水的插件，如果我退出了插件界面，可能就无法实现。但是要做成了系统插件，即使退出了插件，但<code>rubick</code>依旧会在后台运行插件提供的<code>hooks</code>。这个灵感也是来自于 <code>PicGo</code> 的插件生命周期设计。下面来演示系统插件：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b79d6cc537dc42f4844ae6a72c804bcb~tplv-k3u1fbpfcp-watermark.image?" alt="QQ20211224-164014.gif"></p>
+<p>有了系统插件，我们就可以实现 <code>屏幕取色插件</code>、<code>定时提醒插件</code>、<code>超级面板插件</code>… 另外，由于 <code>rubick</code> 的系统插件是运行在 <code>main</code> 进程的，所以，我们可以通过系统插件做到更多的能力，比如把 <code>rubick</code> 就看出是 <code>electron</code> 的二次封装，不需要任何 <code>electron</code> 的构建打包，基于系统插件，我们可以实现另一个桌面端应用！</p>
+<h2>最后</h2>
+<p>做开源最大的动力是因为热爱，完全是非盈利的，希望做的东西能给需要的小伙伴提供一些帮助和方向，程序员都是最单纯可爱的，希望不要恶意攻击打破程开源动力最后一份热衷。</p>
+<p>另附：</p>
+<p><a href="https://github.com/rubickCenter/rubick">rubick github 仓库</a></p>
+<p><a href="https://rubickcenter.github.io/rubick/">rubick 使用文档</a></p>
+
+    

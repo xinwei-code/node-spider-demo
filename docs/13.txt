@@ -1,0 +1,38 @@
+
+    标题：异步函数上下文跟踪AsyncLocalStorage
+
+    正文内容：
+    <p>好像没有人讨论过trace相关的话题,感觉很实用呢
+nodejs支持异步函数获取上下文的跟踪了,这个有坑吗
+<a href="https://devdocs.io/node/async_context#AsyncLocalStorage">class AsyncLocalStorage</a></p>
+<pre class="prettyprint"><code>const http = require('http');
+const { AsyncLocalStorage } = require('async_hooks');
+
+const asyncLocalStorage = new AsyncLocalStorage();
+
+function logWithId(msg) {
+  const id = asyncLocalStorage.getStore();
+  console.log(`${id !== undefined ? id : '-'}:`, msg);
+}
+
+let idSeq = 0;
+http.createServer((req, res) =&gt; {
+  asyncLocalStorage.run(idSeq++, () =&gt; {
+    logWithId('start');
+    // Imagine any chain of async operations here
+    setImmediate(() =&gt; {
+      logWithId('finish');
+      res.end();
+    });
+  });
+}).listen(8080);
+
+http.get('http://localhost:8080');
+http.get('http://localhost:8080');
+// Prints:
+//   0: start
+//   1: start
+//   0: finish
+//   1: finish
+</code></pre>
+    

@@ -1,0 +1,28 @@
+
+    标题：使用Tin快速安装phpBB，搭建你自己的论坛（超级快速）
+
+    正文内容：
+    <p>PhpBB是一个被广泛应用的开源论坛软件。拥有易于使用的管理面板和友好的用户安装界面，您可以轻松地在数分钟内建立起您的论坛。
+这里提供一个不用下载任何依赖，小白也能操作的，快速打开使用phpBB的方法。</p>
+<p>先介绍下实现这一过程的工具：
+TeamCode Tin是一个能够快速从源码构建可运行实例的工具。使用界面完全跳过底层操作，技术小白也能完全看的懂操作。Tin应用已经将phpBB所需的各种依赖打包，用户无需其他操作，点击Tin应用即可直接在云端运行phpBB2.0。</p>
+<p>操作步骤：</p>
+<ol>
+<li>点击phpBB的Tin链接(这里使用的是phpBB2.0版本）
+<a href="https://www.teamcode.com/tin/clone?applicationId=273460556549484544">https://www.teamcode.com/tin/clone?applicationId=273460556549484544</a></li>
+<li>点击后进入TeamCode登录页面完成登录（已登录用户可跳过该步骤）。你可以选择邮件、手机号、google账户、微信以及QQ进行快速登录。
+<img src="//static.cnodejs.org/FmbKrcS-fIRYqX3QO5pN9FrpY3el" alt="image1.png">
+注册TeamCode的用户，每个月都有一定的免费额度可以使用。
+<img src="//static.cnodejs.org/Ftr_Pl8pjctOpkNepXBJijWxeEgd" alt="image2.png"></li>
+<li>点击 Clone，将phpBB2.0克隆到自己的Tin工作空间。
+<img src="//static.cnodejs.org/FvkVa0p3qOGT0THhE6mKGFJxJ6Ot" alt="image3.png"></li>
+<li>点击 RUN NOW，Tin应用会立即运行。
+<img src="//static.cnodejs.org/Fnz1HTAcuMHo09MmukIyraWQj8sL" alt="image4.png"></li>
+<li>点击Primary Endpoint，即可立即访问phpBB。
+<img src="//static.cnodejs.org/Fhg2Pl6aLn7r_JBSMcpNJbHGD4jK" alt="image5.png"></li>
+<li>你已经成功打开phpBB2.0，登录使用即可。
+<img src="//static.cnodejs.org/FgvMEArhVCwuEPMscjOqw6aBf0nX" alt="image6.png"></li>
+</ol>
+<p>如果你想同样快速的安装使用phpBB其他版本或其他开源项目，跳过环境安装配置过程，可以在TeamCode官网查看Tin的详细使用指南 <a href="https://www.teamcode.com/docs/tin/create-tin%EF%BC%8C%E6%9B%B4%E5%A4%9A%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD%E7%AD%89%E4%BD%A0%E5%8F%91%E7%8E%B0%E3%80%82">https://www.teamcode.com/docs/tin/create-tin，更多好用的功能等你发现。</a></p>
+
+    

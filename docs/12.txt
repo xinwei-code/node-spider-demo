@@ -1,0 +1,12 @@
+
+    标题：40万人在学的Nodejs+Express+mongoose教程-B站免费看 源码免费下 谁说Node不火
+
+    正文内容：
+    <p>0基础就可以学的nodejs教程，教程包括Nodejs基础，Nodejs手写一个express框架 ，Express使用，Mongodb使用，Mongoose等。</p>
+<p>B站地址：<a href="https://www.bilibili.com/video/av38925557/?p=1">https://www.bilibili.com/video/av38925557/?p=1</a></p>
+<p>视频源码下载地址： <a href="https://pan.baidu.com/s/1L5SAAj0sRiX80xBPwMXmxA">https://pan.baidu.com/s/1L5SAAj0sRiX80xBPwMXmxA</a>    提取码：abcd</p>
+<p>谁说Nodejs每人学我和谁急眼</p>
+<p><strong>教程包括：</strong></p>
+<p>其中包括Nodejs安装配置、Nodejs内置模块、Nodejs自定义模块、Nodejs第三方模块、npm包管理、Nodejs新特性 async await 、以及Nodejs创建web服务、模板引擎、NodeJs封装一个自己的Express框架、MongoDB安装、MongoDB增删改查、MongoDB索引、MongoDB权限管理、MongoDB聚合管道、MongoDB aggregate聚合管道 多表关联查询、Nodejs操作mongodb数据库、Express介绍、Express路由、Express Ejs 、Express Cookie、Express Session、Express Restfull APi、Express 上传图片、 Mongoose的安装、mongoose增删改查、mongoose默认参数 、mongoose模块化、Mongoose 预定义模式修饰符、自定义修饰符、Mongoose索引、扩展Mongoose内置查询方法、Mongoose 数据校验、Mongoose两个表关联查询aggregate、MongooseN个表关联查询aggregate、Mongoose、 DBRef  Populate、以及Express+Mongoose实战</p>
+
+    

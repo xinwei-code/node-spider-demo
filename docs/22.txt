@@ -1,0 +1,33 @@
+
+    标题：使用Tin快安装Atlassian JIRA
+
+    正文内容：
+    <p>JIRA是Atlassian开发的一款针对敏捷团队的开发管理工具。
+<img src="//static.cnodejs.org/Fn3wrKQHQPMhQMZ5myA6sjZiaUBu" alt="image1.png">
+这里提供一个不用下载任何依赖，小白也能操作的，快速打开使用Atlassian JIRA的方法。</p>
+<p>先介绍下实现这一过程的工具：
+TeamCode Tin是一个能够快速从源码构建可运行实例的工具。使用界面完全跳过底层操作，技术小白也能完全看的懂操作。用户使用Tin应用即可直接在云端运行Atlassian JIRA。</p>
+<p>操作步骤：</p>
+<ol>
+<li>点击Atlassian JIRA的Tin链接
+<a href="https://www.teamcode.com/tin/clone?applicationId=274556439252869120">https://www.teamcode.com/tin/clone?applicationId=274556439252869120</a></li>
+<li>点击后进入TeamCode登录页面完成登录（已登录用户可跳过该步骤）。你可以选择邮件、手机号、google账户、微信以及QQ进行快速登录。
+<img src="//static.cnodejs.org/FmbKrcS-fIRYqX3QO5pN9FrpY3el" alt="image2.png">
+注册TeamCode的用户，每个月都有一定的免费额度可以使用。
+<img src="//static.cnodejs.org/FgO9wRbJ3VhVJSQ3JluAAnrgT6Ej" alt="image3.png"></li>
+<li>点击 Clone，将Atlassian JIRA克隆到自己的Tin工作空间。
+<img src="//static.cnodejs.org/FnjAlf9EF1lM5XnnLl08y4xXpJ_p" alt="image4.png"></li>
+<li>点击 RUN NOW，Tin应用会立即运行。
+<img src="//static.cnodejs.org/FlD6lwQx0cOFYmNvJil_vPJtPSUw" alt="image5.png"></li>
+<li>点击Endpoint Lists，可以看到访问Atlassian JIRA的入口。
+<img src="//static.cnodejs.org/Ft9XoN75wjRVvxbrn819EZoU-CSr" alt="image6.png"></li>
+<li>点击Endpoint入口（图中红框的链接），即可立即访问Atlassian JIRA。
+<img src="//static.cnodejs.org/FgwB8jCmairI3DL5_maE12mxU963" alt="image7.png"></li>
+<li>你已经可以开始使用Atlassian JIRA。
+<img src="//static.cnodejs.org/Fkz-PD6oApAIA0viB_9eBRVJxLrN" alt="image8.png"></li>
+<li>你可以在Tin的概览页自定义运行时硬件配置，以满足你对运行性能的不同需求。
+<img src="//static.cnodejs.org/Fo6kYF2_oMauupncyuf-PCcBOplj" alt="image9.png"></li>
+</ol>
+<p>如果你想同样快速的安装使用其他开源项目，跳过环境安装配置过程，可以在TeamCode官网查看Tin的详细使用指南 <a href="https://www.teamcode.com/docs/tin/create-tin%EF%BC%8C%E6%9B%B4%E5%A4%9A%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD%E7%AD%89%E4%BD%A0%E5%8F%91%E7%8E%B0%E3%80%82">https://www.teamcode.com/docs/tin/create-tin，更多好用的功能等你发现。</a></p>
+
+    

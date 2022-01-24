@@ -1,0 +1,11 @@
+
+    标题：零过渡，比React更优雅的前端框架Solid.js
+
+    正文内容：
+    <p>Solid.js 没有了虚拟DOM的比较、更小的体积。
+没有React很容易踩坑的组件重复渲染的问题。
+<a href="https://www.solidjs.com/">https://www.solidjs.com/</a>
+<img src="//static.cnodejs.org/FtDpp9T887la5U-TTnqJtYQx1Zpj" alt="WechatIMG26.png">
+<img src="//static.cnodejs.org/FsWEY3R7W3PZK8PDFnHaf8gTy4X6" alt="WechatIMG27.png"></p>
+
+    

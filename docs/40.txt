@@ -1,0 +1,22 @@
+
+    标题：Pylon CLI 低成本的本地环境管控工具应用实例
+
+    正文内容：
+    <p>作为前端工程师，Node 是必备的Java开发工具，目前我负责的大部分项目都是基于Node12。
+<img src="//static.cnodejs.org/Fn-ptImKMbsx2rdb_-Qo_727D3RA" alt="p1.png">
+但最近一个新项目需要基于Javascript搭建自己Blog站点，然而问题来了，我选择的是gatsby-starter-blog，需要有Node14。这与我负责的其它项目版本就冲突了。我开始思考并搜索解决方法。</p>
+<p>这时我想到之前使用过的一个云端协作开发平台<a href="https://www.teamcode.com/">TeamCode</a>，有一些高效能、轻量级的工具，刚好最近看到他们的公众号推送，产品Pylon新推出一个Pylon CLI工具，似乎有匹配的功能。
+<img src="//static.cnodejs.org/Fu3SqfzvPKnAIoaI1Ymb384PyjWT" alt="p2.png"></p>
+<p>我来到他们官网，开始查看<a href="https://www.teamcode.com/docs/en-US/pylon/pylon-cli">Pylon CLI </a>的功能说明：它是在本地管控 Pylon 开发环境的客户端工具，可以通过 Git 仓库地址快速在本地搭建开发环境，并管理所有本地创建的开发环境。
+<img src="//static.cnodejs.org/FvTyI6aLwnWHbKeIzRiCi4VBwfKl" alt="p3.png">
+根据产品文档，下载并安装 CLI，创建最新版本的Node 16
+<img src="//static.cnodejs.org/FnibLOglzothw4IuqgH4lbBdRkY3" alt="p4.png">
+<img src="//static.cnodejs.org/FkCRn9OOBjtcfu5nDzcaJ-hkp51C" alt="p5.png">
+创建成功
+<img src="//static.cnodejs.org/FmxZRaQSL4FDcLd0ZRFCmQWUeQB2" alt="p6.png">
+用VSCode打开项目，运行成功
+<img src="//static.cnodejs.org/FtEUqqCUr8mAnG7ERbRcLb3C75bG" alt="p7.png">
+这样就可以在电脑上运行和启动gatsby-starter-blog，并且不用担心环境冲突或者协调问题。</p>
+<p>对于普通开发者来说，本地算力足够，不需要再花费额外成本，在云端搭建开发环境。然而本地开发环境会出现一些适配问题，最突出的一点就是没有环境隔离，不同项目所需的依赖版本不一致，导致项目无法运行成功。Pylon CLI可快速搭建并管理多个本地开发环境，不同子开发环境之间相互隔离，互不影响。它满足不同项目对运行环境的需求，也就是基于此，我选择了TeamCode Pylon。</p>
+
+    

@@ -1,0 +1,31 @@
+
+    标题：使用Tin快安装WordPress（全网最快安装法 100%成功）
+
+    正文内容：
+    <p>WordPress是全球最多人使用的，基于PHP和MySQL的免费开源的建站程序。全球超过41%的网站使用WordPress驱动。 （<a href="https://github.com/WordPress/WordPress%EF%BC%89">https://github.com/WordPress/WordPress）</a>
+<img src="//static.cnodejs.org/FrZutFlMroOAVtrQrirJUAeih9IW" alt="image11.png"></p>
+<p>这里提供一个不用下载任何依赖，小白也能操作的，快速使用WordPress来建站的方法。</p>
+<p>先介绍下实现这一过程的工具：
+TeamCode Tin是一个能够快速从源码构建可运行实例的工具。使用界面完全跳过底层操作，技术小白也能完全看的懂操作。Tin应用已经将WordPress所需的各种依赖打包，用户无需其他操作，点击Tin应用即可直接在云端运行WordPress。</p>
+<p>操作步骤：</p>
+<ol>
+<li>点击WordPress的Tin链接。
+<a href="https://www.teamcode.com/tin/clone?applicationId=273118414111141888">https://www.teamcode.com/tin/clone?applicationId=273118414111141888</a></li>
+<li>点击后进入TeamCode登录页面完成登录（已登录用户可跳过该步骤）。你可以选择邮件、手机号、google账户、微信以及QQ进行快速登录。
+<img src="//static.cnodejs.org/FmbKrcS-fIRYqX3QO5pN9FrpY3el" alt="image12.png">
+注册TeamCode的用户，每个月都有一定的免费额度可以使用。
+<img src="//static.cnodejs.org/Ftr_Pl8pjctOpkNepXBJijWxeEgd" alt="image13.png"></li>
+<li>点击 Clone，将WordPress克隆到自己的Tin工作空间。
+<img src="//static.cnodejs.org/FiDiFoT9pnnqRZFexPbq60fHuUwT" alt="image14.png"></li>
+<li>点击 RUN NOW，Tin应用会立即运行。
+<img src="//static.cnodejs.org/Fhl0uDNBAenc25Ve_TQTR02f8KOB" alt="image333.png"></li>
+<li>点击Endpoint Lists，可以看到访问WordPress的入口。
+<img src="//static.cnodejs.org/FjuyKBKRYrzDHZBUH1d0rvGgykpl" alt="image15.png"></li>
+<li>点击Endpoint入口（图中红框的链接），即可立即访问WordPress。
+<img src="//static.cnodejs.org/FnCMc5V4MJ9XHMiWCkfoivcvqCLF" alt="image16.png"></li>
+<li>你已经成功打开WordPress。
+<img src="//static.cnodejs.org/FnCPdUbDOq3VlH_1PfIlLK8qBv8O" alt="image17.png"></li>
+</ol>
+<p>如果你想同样快速的安装使用其他开源项目，跳过环境安装配置过程，可以在TeamCode官网查看Tin的详细使用指南 <a href="https://www.teamcode.com/docs/tin/create-tin%EF%BC%8C%E6%9B%B4%E5%A4%9A%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8A%9F%E8%83%BD%E7%AD%89%E4%BD%A0%E5%8F%91%E7%8E%B0%E3%80%82">https://www.teamcode.com/docs/tin/create-tin，更多好用的功能等你发现。</a></p>
+
+    

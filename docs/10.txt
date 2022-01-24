@@ -1,0 +1,112 @@
+
+    标题：看看CabloyJS是如何实现编辑页面脏标记的
+
+    正文内容：
+    <h2>应用场景</h2>
+<p>我们在使用Word、Excel时，当修改了内容之后在标题栏会显示<code>脏标记</code>，从而可以明确的告知用户内容有变动。此外，如果在没有保存的情况下关闭窗口，系统会弹出提示框，让用户选择是否放弃修改</p>
+<p>那么，在Web系统中，我们是否也可以支持这种<code>脏标记</code>机制呢？</p>
+<p>答案是肯定的，CabloyJS就提供了这种<code>脏标记</code>机制，而且CabloyJS内置的所有可以编辑的页面都支持了这种效果</p>
+<h2>效果演示</h2>
+<p><img src="https://admin.cabloy.com/api/a/file/file/download/49ef58bcaf8148f2b0ef9cc723a9e063.gif" alt="pagedirty-zhcn"></p>
+<h2>如何使用</h2>
+<p>下面以模块<code>test-party</code>为例，演示如何向编辑页面添加<code>脏标记</code>机制。演示代码都在下面的文件中：</p>
+<p><code>src/module-vendor/test-party/front/src/kitchen-sink/pages/markdownEditor.vue</code></p>
+<h3>1. 引入脏标记组件</h3>
+<pre class="prettyprint language- javascript"><code>import Vue from 'vue';
+const ebPageDirty = Vue.prototype.$meta.module.get('a-components').options.mixins.ebPageDirty;
+export default {
+  mixins: [ebPageDirty],
+  ...
+}
+</code></pre><p><code>ebPageDirty</code>是由模块<code>a-components</code>提供的组件，放入当前页面组件的<code>mixins</code>中</p>
+<h3>2. Title显示脏标记</h3>
+<pre class="prettyprint language- javascript"><code>&lt;template&gt;
+  &lt;eb-page&gt;
+3.    &lt;eb-navbar :title="page_title" eb-back-link="Back"&gt;
+      ...
+    &lt;/eb-navbar&gt;
+  &lt;/eb-page&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import Vue from 'vue';
+const ebPageDirty = Vue.prototype.$meta.module.get('a-components').options.mixins.ebPageDirty;
+export default {
+  mixins: [ebPageDirty],
+  ...
+  computed: {
+    page_title() {
+16.      const title = this.$text('Markdown Editor');
+17.      return this.page_getDirtyTitle(title);
+    },
+  },
+};
+&lt;/script&gt;
+</code></pre><ul>
+<li>
+<p>行16：获取国际化处理后的标题</p>
+</li>
+<li>
+<p>行17：调用<code>page_getDirtyTitle</code>方法向<code>title</code>动态添加脏标记</p>
+</li>
+<li>
+<p>行3：动态绑定<code>page_title</code></p>
+</li>
+</ul>
+<h3>3. 修改脏标记</h3>
+<pre class="prettyprint language- javascript"><code>export default {
+  ...
+  methods: {
+    async onPerformSave() {
+      if (!this.$refs.editor) return;
+      await this.$refs.editor.checkContent();
+      this.$view.toast.show({ text: this.$text('Saved') });
+8.      this.page_setDirty(false);
+    },
+    onInput(data) {
+      if (this.content === data) return;
+      this.content = data;
+13.      this.page_setDirty(true);
+    },
+  },
+};
+</code></pre><ul>
+<li>
+<p>行13：当用户输入内容时，调用<code>page_setDirty</code>方法将脏标记置为<code>true</code></p>
+</li>
+<li>
+<p>行8：当保存内容时，调用<code>page_setDirty</code>方法将脏标记置为<code>false</code></p>
+</li>
+</ul>
+<h2>组件ebPageDirty的方法</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>page_getDirtyTitle</td>
+<td>向Title动态添加脏标记</td>
+<td></td>
+</tr>
+<tr>
+<td>page_setDirty</td>
+<td>修改脏标记</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2><strong>相关链接</strong></h2>
+<ul>
+<li>
+<p>文档: <a href="https://cabloy.com/">https://cabloy.com/</a></p>
+</li>
+<li>
+<p>GitHub: <a href="https://github.com/zhennann/cabloy">https://github.com/zhennann/cabloy</a></p>
+</li>
+</ul>
+
+    

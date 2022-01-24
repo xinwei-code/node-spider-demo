@@ -1,0 +1,57 @@
+
+    标题：Node.js 2021年开发者报告解读：健康稳步的发展中
+
+    正文内容：
+    <p>很多人觉得Node.js没有往年那么火了，事实上不是这样的，Node.js社区健康稳步的发展中，主要是从性能好向好用转变，在易用性上有很大提升，从Node.js源码更新的内容看，大抵如此。Node.js Diagnostics Working Group是近二年Node.js社区的重点工作组，Node.js 14版本之后的大部分功能特性都是这个工作组推动的。早在2015年，有2个跟踪工作组tracing WG 和事后分析工作组 postmortem WG，在2017年合并到Diagnostics WG。核心产出是async_hooks, profiling, tracing, dump debug, report等，都是在易用性和好用性上做提升。让每个Node.js开发者更低门槛的提升Node.js应用的开发体验。</p>
+<p>秦粤老师在《浮华过后的Node.js》分享里，也表达了同样观点，他用的是产品化平缓期，也是健康稳步的发展的意思。</p>
+<p><img src="//static.cnodejs.org/FqRK1Uehhaz3lFDF3oHeL97Z7zYm" alt="image.png"></p>
+<p>社区方面，Web框架已经没有多少空间，以特性取胜的框架，应该不会很多，比较期待Egg3。像fastify这种，修改Node.js机制，在性能领域深耕的框架，目前看是比较有作为的。pnpm是有创新的，但代码是有点可读性不太好。我更加喜欢rushstack对menorepo的改进，大规模编程范式还需要探索。除了去年提的midway-hooks，easy-monitor，看起来remix和morden算新，但还没有超出之前的范畴。</p>
+<p>下面结合《<a href="https://nodersurvey.github.io/reporters">Node.js开发者2021报告</a>》内容，我们详细解读一下Node.js 2021年的情况。这份解读是根据冰森&amp;狼叔直播内容整理的，要点如下。
+​</p>
+<h3>1）开发框架变化较大，造轮子变少，TS变多，使用企业级框架变多</h3>
+<p>​</p>
+<p>去年express占比还非常高，今年企业级框架变多，尤其是大而全的框架更受欢迎。</p>
+<p><img src="//static.cnodejs.org/Fl-QFKuag-dvFGbx7Q45WabMH5d8" alt="image.png"></p>
+<p>Egg在国内普及率很高，而Midway和Nest增长较快，其实和TS普及有一定关系。
+​
+<img src="//static.cnodejs.org/FvoNa6PGZJN1ZaqZlmXZuRnNUI5_" alt="image.png">
+​</p>
+<h3>2）版本更新变化较大，从Node 12升级到Node 14，升级比较积极</h3>
+<p>​</p>
+<p>去年Node.js主要是使用Node 12，2021年Node 14占比将近一半，更新还是较快的。</p>
+<p><img src="//static.cnodejs.org/FpQcq4qzd9rl-R-VEXzLZAiVMPaa" alt="image.png">
+​</p>
+<h3>3）吐槽变多，意味着用的人变多，趋于成熟</h3>
+<p>​</p>
+<p>C++之父Bjarne Stroustrup说过：世界上只有两种编程语言,一种是整天被人骂的,还有一种是没人用的。
+​</p>
+<p>大家对Node.js吐槽变多，实际上是在应用场景上使用较多，不再是针对于某些特性而进行吹捧。回归理性，在真实应用场景上，分布广泛，核心围绕API和BFF层，CLI&amp;工具。
+​
+<img src="//static.cnodejs.org/FkEeeI7hvEdSMIyUNaKxnQx9pzcJ" alt="image.png"></p>
+<h3>4）出圈：年龄分布较去年比变大，使用工种也变得比较丰富。</h3>
+<p>除了应用场景上，分布广泛外，非前端意外的开发者相关角色也有很大比例的提升，比如架构师，技术总监，项目经理等都一定程度上使用Node.js。可以说Node.js走出了前端圈，面向更大群体提供服务。另外受访者的年龄分布也变大了，这和出圈是有直接关系的。
+​
+<img src="//static.cnodejs.org/FsnHAf1Map8P8i4bEAn89POQf_8E" alt="image.png"></p>
+<h3>5）使用困惑：性能优化，内存泄漏以及npm依赖</h3>
+<p>​</p>
+<p>以往对Node.js困惑最多的是异步流程控制，随着async/await的普及，这个问题已经慢慢在弱化。随着开发者使用Node.js深度增加，对性能优化，内存泄漏更为关注，这也是比较容易理解的。</p>
+<p><img src="//static.cnodejs.org/FkPiwL5U9kbNq1vUE1J8AQKn54z4" alt="image.png"></p>
+<p>​</p>
+<h3>6）未来：从业经验越高则越关注性能和 Serverless</h3>
+<p>​</p>
+<p>关注性能比较容易理解，关注Serverless最主要是的原因是Serverless可以做到低运维甚至是0运维。运维作为Node.js开发者必备技能，Serverless的出现使得很多非专业Node.js也能轻松搞定Node.js各种服务端场景。</p>
+<p><img src="//static.cnodejs.org/FjZSOZ1uO-Tqh8yTL2E4CtvMUFbN" alt="image.png"></p>
+<p><img src="//static.cnodejs.org/FshPaWkMvnMKMxJckqf0L-M5OYe1" alt="image.png"></p>
+<h3>推荐阅读</h3>
+<ul>
+<li>天猪《EggJS 的前世今生与未来》，比较期待Egg3，easy-monitor作者一君也加入Egg3项目组了 <a href="https://www.yuque.com/atian25/blog/egg-1to2to3">https://www.yuque.com/atian25/blog/egg-1to2to3</a></li>
+<li>秦粤 《浮华过后的Node.js》链接稍后给出来</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li>原文  <a href="https://cnodejs.org/topic/6108bbc2a5d29d175c2d4208">https://cnodejs.org/topic/6108bbc2a5d29d175c2d4208</a></li>
+<li>报告 <a href="https://nodersurvey.github.io/reporters">https://nodersurvey.github.io/reporters</a></li>
+</ul>
+<p>如果大家想参与讨论，欢迎回复</p>
+
+    

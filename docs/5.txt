@@ -1,0 +1,45 @@
+
+    标题：【望周知，求扩散】淘宝 NPM 镜像站喊你切换新域名啦
+
+    正文内容：
+    <blockquote>
+<p>知乎原文地址：<a href="https://zhuanlan.zhihu.com/p/430580607">https://zhuanlan.zhihu.com/p/430580607</a></p>
+</blockquote>
+<h2>源起</h2>
+<p>淘宝 NPM 镜像站（<a href="http://npm.taobao.org">npm.taobao.org</a>）自 <a href="https://www.yuque.com/egg/data/taobaonpm#7f2e">2014 年</a> 正式对外服务，一开始只是想简单地做 NPM 的中国镜像站点，回馈国内前端社区，不知不觉竟然一直运行到现在。当年参考 <code>Ruby Gems 淘宝镜像</code> 的方式，跟阿里开源组织申请了 <a href="http://taobao.org">taobao.org</a> 的二级域名，镜像站点名称也自然而然地取名为 <code>淘宝 NPM 镜像站</code> （下称 CNPM）。</p>
+<p><img src="//static.cnodejs.org/Fuab0SKMfdsQUQZlbySva7BKTZsM" alt="cnpm.png"></p>
+<blockquote>
+<p>图片来源：<a href="https://time.graphics/line/579718">https://time.graphics/line/579718</a></p>
+</blockquote>
+<p>如上图，从 2014 年 CNPM 正式提供服务到今天，NPM 包从 10 万 → 178 万，CNPM 的包下载量从 1 亿 → 200 亿（未包含阿里等私有源）。
+<strong>​</strong></p>
+<p><strong>可以毫不谦虚的说， CNPM 见证了国内前端蓬勃发展的这 8 年</strong>，未来我们希望继续陪伴中国的前端开发者持续走下去。</p>
+<p>PS：虽然核心参与者大部分来自国内大厂，不过 CNPM 本身是一个中立的公益项目，日常巨大的运维费用均来自社区捐赠。</p>
+<hr>
+<h2>新的起航</h2>
+<p>随着前端的蓬勃发展， NPM 包数据量和内容复杂度仍在不断地加速增长，CNPM 当年的架构已经很难满足当今的形势。</p>
+<p>为了提供更稳定、更安全、更符合国家法律法规要求的镜像服务，我们今年启动了 CNPM 的优化工作：</p>
+<ul>
+<li><strong>启动新的域名。</strong></li>
+<li>Registry 全面重构，提升稳定性，降低同步失败率。</li>
+<li>CLI 优化，提升安装速度，去掉软连接等带来的兼容性问题。</li>
+<li>沉淀自企业级大规模应用的使用经验手册。</li>
+<li>等等。。。</li>
+</ul>
+<p>应该有不少开发者已经发现，访问淘宝 NPM 已经会自动 301 跳转到 <a href="https://npmmirror.com/">npmmirror.com</a> 新域名，这是我们独立注册和备案的域名。</p>
+<ul>
+<li>Web 站点：<a href="https://npmmirror.com">https://npmmirror.com</a></li>
+<li>Registry Endpoint：<a href="https://registry.npmmirror.com">https://registry.npmmirror.com</a></li>
+</ul>
+<p>随着新的域名已经正式启用，老 <a href="http://npm.taobao.org">npm.taobao.org</a> 和 <a href="http://registry.npm.taobao.org">registry.npm.taobao.org</a> 域名将于 2022 年 05 月 31 日零时起停止服务。
+<strong>​</strong></p>
+<p><strong>恳请有强依赖老域名的各位开发者尽快更新到新域名，企业用户可能还需要联系网管/IT/SRE 更新防火墙白名单。</strong> 当然如果你使用的是 cnpm 的 CLI 命令行工具，我们会去全部替换并发布新版本，大家只需要重新安装到最小版本即可。</p>
+<p>我们深知更换域名并停止对老域名的支持是一种体验非常不好的事情，但为了能在符合网站合规运营要求的情况下，可以更长期可持续运行下去，我们还是最终做出这个更换域名的决定，再次说声抱歉。</p>
+<p>其他功能正在开发中，欢迎围观 <a href="https://github.com/cnpm/cnpmcore">GitHub</a> ，更期待您能提 PR 参与开源共建。</p>
+<hr>
+<h2>特别感谢</h2>
+<p>非常感谢 <a href="https://developer.aliyun.com/mirror/">阿里云开发者社区的开源镜像站</a> 对淘宝 NPM 镜像站这些年来的持续赞助，才让我们可以不为巨大流量和存储费用而烦恼，才让我们可以持续专注做好专业的技术工作。</p>
+<p>还要特别感谢 <a href="https://fed.taobao.org/">淘宝前端团队</a>，帮助我们处理这些来年关于 <a href="http://npm.taobao.org">npm.taobao.org</a> 的域名注册、证书更新、合规等许多复杂流程。</p>
+<p>最后，为了国内开发者能尽可能早的完成切换，我们厚着脸皮请求大家帮忙传播下，谢谢。</p>
+
+    

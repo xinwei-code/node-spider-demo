@@ -1,0 +1,26 @@
+
+    标题：低代码做的客户关系管理系统CRM
+
+    正文内容：
+    <p>客户关系管理精简版，面向企业客户，支持客户打标签、销售漏斗、自定义销售阶段、自定义客户分类等等，你可以结合本公司的实际情况，进一步自主实现赢单后的销售绩效提成功能模块。</p>
+<p>预览地址： <a href="https://previewer.wuyuan.io/proj/28535/login">https://previewer.wuyuan.io/proj/28535/login</a>  用户名/密码：3 / 123  （需要先登录无远开发平台）</p>
+<p>工作台配置地址：<a href="https://workbench.wuyuan.io/proj/28535">https://workbench.wuyuan.io/proj/28535</a>（需要先登录无远开发平台）</p>
+<h2>【预览图】</h2>
+<h3>客户公海</h3>
+<p><img src="//static.cnodejs.org/FkxECQWKwab2Zd3UkmfyvyzLwLV9" alt="proj-28535-1.png"></p>
+<h3>我的客户</h3>
+<p><img src="//static.cnodejs.org/Fk9i77SMma8_vP3YD4eHHWyHSXI9" alt="proj-28535-2.png"></p>
+<h2>（看到上面这样的工作界面，可以逐个电话（SAORAO）客户，有没有想当一把销售的冲动？）</h2>
+<h3>客户详情</h3>
+<p><img src="//static.cnodejs.org/Fq9WMAldFLEvIuwjJ7axKcdQpAp-" alt="proj-28535-3.png"></p>
+<h3>我的销售统计</h3>
+<p><img src="//static.cnodejs.org/FiCdk9d2vaDmJCh93oM9qmrzwv_k" alt="proj-28535-4.png"></p>
+<h3>销售统计分析（领导视角）</h3>
+<p><img src="//static.cnodejs.org/Fu6Zx31QH1w45VdS0tBiaBQ4OTZR" alt="proj-28535-5.png"></p>
+<h3>销售参数配置</h3>
+<p><img src="//static.cnodejs.org/FuBlcwShZFRIOUZV40xwXbAdkgnE" alt="proj-28535-6.png"></p>
+<h3>如何使用？</h3>
+<p>在开发工作台模板库中即可直接引入使用，【完整系统版】有11个页面包含了关于行政区表、用户表的基础功能实现，如果只希望使用销售相关的功能页面，跟自己现有项目的用户对接，可以使用【客户关系管理模板】，表结构字段不对用户表有依赖，方便自己修改。
+<img src="//static.cnodejs.org/Fg8YnrvZbKpBhYgvfekicKIuApMT" alt="123.jpeg"></p>
+
+    

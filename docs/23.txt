@@ -1,0 +1,7 @@
+
+    标题：vscode 突然不提示node的API了，可能是因为我改了什么导致的？
+
+    正文内容：
+    <p><img src="//static.cnodejs.org/FsILvc4jhO4RcSezyD6Ap5PRKTXq" alt="截屏2022-01-12 下午2.15.43.png"></p>
+
+    

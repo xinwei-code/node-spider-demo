@@ -1,0 +1,10 @@
+
+    标题：是否可以认为 JS 的 Array 本质就好像 Java 的 ArrayList，JS 本身并没有暴露数组这个概念？
+
+    正文内容：
+    <p>当 <code>new Array(len)</code> 时，我观察到一个现象：</p>
+<pre class="prettyprint language-js"><code>const arr = new Array(100);
+arr.forEach(() =&gt; console.log(123));
+</code></pre><p>这种情况下 console.log 并不会输出，所以这里传入的并不是 length，而是 capacity？</p>
+
+    

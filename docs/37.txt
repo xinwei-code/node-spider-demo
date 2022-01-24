@@ -1,0 +1,291 @@
+
+    标题：CabloyJS究竟是一款什么样的框架
+
+    正文内容：
+    <p><code>CabloyJS是个什么框架</code>：对这个话题的阐释已经重构过许多版本了，基本上每次有新增的特性就会考虑重构一次。这不，又重构了一次。宗旨只有一个：就是把CabloyJS说清楚。这一次为了说得更清楚，反而删减了大量文字，于是重点就凸显出来了</p>
+<h2>CabloyJS是什么样的框架</h2>
+<p>CabloyJS 是一款自带<code>工作流引擎</code>的 Node.js 全栈框架，一款<code>面向开发者</code>的低代码开发平台，更是一款兼具低代码的<code>开箱即用</code>和专业代码的<code>灵活定制</code>的 PAAS 平台</p>
+<p>CabloyJS 内置的每一项特性都做到精心调校，均体现了从<code>开箱即用</code>到<code>灵活定制</code>的无缝衔接，包括：角色系统、用户认证、菜单权限、数据权限、表单渲染、表单验证、工作流引擎、字典、仪表板、在线推送、页面主题、多语言国际化、CMS 渲染引擎、微信接口、企业微信接口、钉钉接口，等等</p>
+<h2><strong>技术栈</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>场景</strong></th>
+<th><strong>技术栈</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前端</td>
+<td>vue2 + framework7</td>
+</tr>
+<tr>
+<td>后端</td>
+<td>koa2 + egg2</td>
+</tr>
+<tr>
+<td>数据库</td>
+<td>mysql</td>
+</tr>
+<tr>
+<td>分布式（缓存/队列/消息）</td>
+<td>redis、bullmq、websocket</td>
+</tr>
+<tr>
+<td>Markdown 富文本编辑</td>
+<td>Prosemirror</td>
+</tr>
+</tbody>
+</table>
+<h2>在线演示</h2>
+<p>请使用PC和Mobile分别访问演示站点，体验与众不同的<code>pc=mobile+pad</code>自适应风格，真正的跨多端架构，一套代码同时适配PC端和Mobile端</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>链接/二维码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC端</td>
+<td><a href="https://test.cabloy.com/">https://test.cabloy.com/</a></td>
+</tr>
+<tr>
+<td>Mobile端</td>
+<td><img src="https://admin.cabloy.com/api/a/file/file/download/5e34bb6f37b04a0299ba687cb3972c35.png" alt="cabloy-demo-qrcode"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>账号类型</th>
+<th>名称</th>
+<th>密码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>管理员</td>
+<td>admin</td>
+<td>123456</td>
+</tr>
+<tr>
+<td>普通用户</td>
+<td>tom</td>
+<td>123456</td>
+</tr>
+<tr>
+<td>普通用户</td>
+<td>jane</td>
+<td>123456</td>
+</tr>
+</tbody>
+</table>
+<h2>引言</h2>
+<blockquote>
+<p>凡是可以用 JavaScript 来写的应用，最终都会用 JavaScript 来写 | Atwood 定律</p>
+</blockquote>
+<p>目前市面上出现的大多数与 NodeJS 相关的框架，基本都将 NodeJS 定位在<code>工具层</code>、<code>聚合层</code>、<code>中间层</code>、<code>代理层</code>，很少在业务层面进行深耕，认为这是 JAVA 的领域，NodeJS 不适合。这种思潮明显是与<code>Atwood 定律</code>相悖的</p>
+<p>如果您想感受不同的 NodeJS 全栈开发体验，一定要试试自带工作流引擎的 CabloyJS 全栈开源框架。为了提升业务层面的开发效率和开发体验，CabloyJS 在前端和后端均提供了大量实用的工具和组件</p>
+<h2><strong>CabloyJS 解决了哪些现实痛点问题？</strong></h2>
+<p>在 NodeJS 开发领域，目前(截止 2022 年 1 月)存在以下几个痛点问题：</p>
+<h3><strong>1. 中后台管理系统如何更优雅的支持移动端？</strong></h3>
+<p>随着移动终端的普及和升级换代，大量业务场景都需要移动端的支持，比如管理层需要通过手机查看统计数据、审核业务单据；运维人员通过手机远程查看服务器状态，并进行调整优化</p>
+<p>我们知道，市面上大多数中后台管理系统，都是优先适配 PC 端，然而移动端体验却不佳，处于<code>勉强可用，但不好用</code>的阶段</p>
+<p>此外，大多数<code>XXX Admin框架</code>和<code>中后台管理框架</code>其本质是<code>代码模版</code>。在具体开发项目时，直接在<code>代码模版</code>中编写代码。这样，虽然修改起来很直接，但是不利于模版的持续升级和优化；也不利于业务代码的持续沉淀和迁移（至其他项目）。因此，当把<code>代码模版</code>从源码仓库下载下来之后，<code>修改三分之一</code>，<code>增加三分之一</code>，<code>删减三分之一</code>，从此就与<code>代码模版</code>的后续升级版本绝缘了</p>
+<h3><strong>2. NodeJS 领域没有好用的工作流引擎！</strong></h3>
+<p>如果单说 CRUD，大多数编程语言的开发框架都可以轻松实现，这不应该成为 NodeJS 开发业务系统的核心优势。若要让 NodeJS 深入业务领域的开发，<code>工作流引擎</code>是一个绕不过去的核心组件</p>
+<h3><strong>3. 拖拽式低代码平台已经成为鸡肋方案！</strong></h3>
+<p>大多数业务表单不仅仅是一些字段的简单组合和增删改查，不同的业务都有自己独特的业务诉求，往往需要前端界面的定制和后端逻辑的定制。拖拽式低代码平台，对于业务人员而言没有足够的工具进行深入定制，对于研发人员而言也没有足够的机制深入开发</p>
+<p>许多拖拽式低代码平台认识到了这一点，所以针对不同的业务场景提供官方预配置的套装解决方案，这同样也把业务人员和研发人员置于<code>不上不下</code>的尴尬境地，成为<code>食之无味 弃之可惜</code>的鸡肋平台</p>
+<h2><strong>CabloyJS 亮点介绍</strong></h2>
+<p>基于上述分析的问题，CabloyJS 实现了如下<code>功能三大亮点</code>和<code>架构三大亮点</code></p>
+<h3><strong>1. 功能三大亮点</strong></h3>
+<p>1）<strong>自适应布局：pc = mobile + pad</strong></p>
+<p>CabloyJS 首创<code>pc = mobile + pad</code>的自适应布局机制：只需要一套代码，<code>mobile端</code>达到原生效果，同时将<code>mobile端</code>的操控体验和开发模式无缝带入<code>pc端</code></p>
+<p>请大家分别在 PC 端和手机端打开<code>演示链接</code>: <a href="https://test.cabloy.com/">https://test.cabloy.com/</a> ，来体会与众不同的自适应机制</p>
+<p>2）<strong>基于 JSON Schema 的表单自动渲染与数据验证引擎</strong></p>
+<p>通过在一处定义<code>JSON Schema</code>，就可以同时支持前端的<code>表单自动渲染</code>和后端的<code>数据验证</code>，既能开箱即用又可灵活定制</p>
+<p>3）<strong>内置 NodeJS 工作流引擎</strong></p>
+<p>CabloyJS 充分利用 JS 语言的灵活性和 JSON 格式的便捷性，提供的 <code>NodeJS工作流引擎</code>远比 JAVA 领域的<code>Activiti</code> 简洁易用</p>
+<p>比如，我们一般只知道如何使用<code>Activiti</code>中提供的<code>活动节点</code>和<code>边界事件</code>，却很少有途径来了解如何开发<code>自定义的活动节点</code>和<code>自定义的边界事件</code>。由于<code>Activiti</code>的架构繁杂，大多数人甚至不愿意尝试去阅读源码。但是 CabloyJS 提供的<code>工作流引擎</code>却可以轻松的定制所有的工作流元素，而且源码层次清晰，易于学习</p>
+<h3><strong>2. 架构三大亮点</strong></h3>
+<p>作为一款面向开发者的低代码开发平台，为了将低代码的<code>开箱即用</code>和专业代码的<code>灵活定制</code>有机融合，CabloyJS 在架构层面主要做了以下几点：</p>
+<p>1）<strong>模块化开发体系与模块隔离</strong></p>
+<p>为了满足大型业务系统开发的诉求，CabloyJS 采用<code>模块思维</code>规划系统架构，以业务功能为单位（比如出差申请），将与业务功能相关的前端组件与后端逻辑组织为一个<code>业务模块</code>，从而有利于业务功能的内聚与重用，也有利于以业务为单位进行团队分工</p>
+<p>此外，业务模块内部的页面、数据、逻辑、路由、配置等元素均进行了命名空间隔离处理，从而避免模块之间的变量污染与冲突。换句话说，当我们在自己的业务模块中为某个资源命名时，不用担心其他业务模块是否存在相同名称的资源，从而减少心智负担</p>
+<p>2）<strong>原生分布式架构</strong></p>
+<p>EggJS 的定位是框架的框架，CabloyJS 后端在 EggJS 的基础上采用<code>自定义Loader</code>机制扩展出来了一套适配业务场景的新特性</p>
+<p>比如，EggJS 原有的<code>Worker + Agent</code>进程模型，对于单机而言非常便利。但是面对多机集群，特别是基于<code>docker</code>的集群部署而言，<code>Agent进程</code>就失去了用武之地。更重要的是，如果一开始基于<code>Agent进程</code>进行开发，后续很难平滑的过渡到分布式场景。因此，CabloyJS 后端采用<code>Redis</code>，从框架底层就开始原生分布式的架构设计，并衍生出了<code>Broadcast、Queue、Schedule、Startup</code>等一系列分布式的开发组件，方便我们从一开始就进行分布式的开发。因此当系统起量后，可以轻松做集群扩展，参见：<a href="https://cabloy.com/zh-cn/articles/broadcast.html">Broadcast</a>, <a href="https://cabloy.com/zh-cn/articles/queue.html">Queue</a>, <a href="https://cabloy.com/zh-cn/articles/schedule.html">Schedule</a>, <a href="https://cabloy.com/zh-cn/articles/startup.html">Startup</a></p>
+<p>3）<strong>前后端分离，全场景开发</strong></p>
+<p>通过前后端分离的架构设计，可以支持全场景业务的快速开发</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>前端</th>
+<th>后端</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC：Web</td>
+<td>CabloyJS 前端</td>
+<td>CabloyJS 后端</td>
+</tr>
+<tr>
+<td>PC：Exe</td>
+<td>CabloyJS 前端 + Electron</td>
+<td>CabloyJS 后端</td>
+</tr>
+<tr>
+<td>Mobile：IOS</td>
+<td>CabloyJS 前端 + Cordova</td>
+<td>CabloyJS 后端</td>
+</tr>
+<tr>
+<td>Mobile：Android</td>
+<td>CabloyJS 前端 + Cordova</td>
+<td>CabloyJS 后端</td>
+</tr>
+<tr>
+<td>微信公众号</td>
+<td>CabloyJS 前端 + 微信 API</td>
+<td>CabloyJS 后端</td>
+</tr>
+<tr>
+<td>企业微信</td>
+<td>CabloyJS 前端 + 企业微信 API</td>
+<td>CabloyJS 后端</td>
+</tr>
+<tr>
+<td>钉钉</td>
+<td>CabloyJS 前端 + 钉钉 API</td>
+<td>CabloyJS 后端</td>
+</tr>
+<tr>
+<td>Slack</td>
+<td>CabloyJS 前端 + Slack API</td>
+<td>CabloyJS 后端</td>
+</tr>
+<tr>
+<td>小程序：微信、支付宝等</td>
+<td>Uni-app + CabloyJS 前端 SDK</td>
+<td>CabloyJS 后端</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>后端</code>：由于完整的前后端分离设计，只需开发一套 CabloyJS 后端代码即可</li>
+<li><code>前端</code>：所有可基于 H5 的场景，只需开发一套 CabloyJS 前端代码即可</li>
+<li><code>小程序</code>：提供 CabloyJS 前端 SDK 让 Uni-app 可以轻松对接 CabloyJS 后端代码</li>
+</ul>
+<h2>CabloyJS可以开发什么系统</h2>
+<ol>
+<li>可以开发<code>多租户SAAS业务系统</code></li>
+<li>可以开发前后端分离的<code>后台业务管理系统</code>，如OA、CRM、ERP、电商，等等</li>
+<li>可以开发<code>JAMStack</code>架构的<code>CMS内容管理系统</code>，支持SEO优化，如博客、技术文档、社区、知识店铺，等等</li>
+<li>既可以先开发<code>后台业务管理系统</code>，再延伸开发<code>CMS内容管理系统</code>；也可以反过来，先开发<code>CMS内容管理系统</code>，再延伸开发<code>后台业务管理系统</code></li>
+<li>可以通过<code>Cordova</code>开发各类App应用，支持IOS、Android</li>
+<li>可以通过<code>Electron</code>开发桌面应用</li>
+<li>可以开发微信公众号、企业微信、钉钉，等第三方平台的应用，解决<code>信息孤岛</code>的问题</li>
+<li>可以为<code>Uniapp小程序</code>开发后端API接口</li>
+</ol>
+<h2>CabloyJS开发的正式系统</h2>
+<table>
+<thead>
+<tr>
+<th>网站类型</th>
+<th>网站链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后台管理系统（PC布局）</td>
+<td><a href="https://admin.cabloy.com">https://admin.cabloy.com</a></td>
+</tr>
+<tr>
+<td>后台管理系统（Mobile布局）</td>
+<td><img src="https://admin.cabloy.com/api/a/file/file/download/6cff1e6f30794cebbfe69f4c80bb3a81.png" alt="cabloy-admin-qrcode"></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>博客</td>
+<td><a href="https://zhennann.com">https://zhennann.com</a></td>
+</tr>
+<tr>
+<td>技术文档（英文）</td>
+<td><a href="https://cabloy.com/index.html">https://cabloy.com/index.html</a></td>
+</tr>
+<tr>
+<td>技术文档（中文）</td>
+<td><a href="https://cabloy.com/zh-cn/index.html">https://cabloy.com/zh-cn/index.html</a></td>
+</tr>
+<tr>
+<td>社区（英文）</td>
+<td><a href="https://community.cabloy.com/index.html">https://community.cabloy.com/index.html</a></td>
+</tr>
+<tr>
+<td>社区（中文）</td>
+<td><a href="https://community.cabloy.com/zh-cn/index.html">https://community.cabloy.com/zh-cn/index.html</a></td>
+</tr>
+<tr>
+<td>课程（英文）</td>
+<td><a href="https://course.cabloy.com/index.html">https://course.cabloy.com/index.html</a></td>
+</tr>
+<tr>
+<td>课程（中文）</td>
+<td><a href="https://course.cabloy.com/zh-cn/index.html">https://course.cabloy.com/zh-cn/index.html</a></td>
+</tr>
+<tr>
+<td>Cabloy商店（英文）</td>
+<td><a href="https://store.cabloy.com/index.html">https://store.cabloy.com/index.html</a></td>
+</tr>
+<tr>
+<td>Cabloy商店（中文）</td>
+<td><a href="https://store.cabloy.com/zh-cn/index.html">https://store.cabloy.com/zh-cn/index.html</a></td>
+</tr>
+</tbody>
+</table>
+<h2>CabloyJS的研发历程</h2>
+<p>CabloyJS从2016年启动开发，主要历经两个研发阶段：</p>
+<h3>1. 第一阶段：EggBornJS</h3>
+<p>EggBornJS关注的核心就是<code>模块化体系</code>与<code>模块隔离</code>，并以此实现一套完整的全栈开发框架</p>
+<p>比如模块<code>egg-born-front</code>是框架前端的核心模块，模块<code>egg-born-backend</code>是框架后端的核心模块，模块<code>egg-born</code>是框架的命令行工具，用于创建项目骨架</p>
+<blockquote>
+<p>这也是为什么所有业务模块都是以<code>egg-born-module-</code>为命名前缀的原因</p>
+</blockquote>
+<h3>2. 第二阶段：CabloyJS</h3>
+<p>EggBornJS只是一个基础的全栈开发框架，如果要支持业务的快速开发，还需要考虑许多与业务相关的支撑特性，如：<code>工作流引擎</code>、<code>用户管理</code>、<code>角色管理</code>、<code>权限管理</code>、<code>菜单管理</code>、<code>参数设置管理</code>、<code>表单验证</code>、<code>登录机制</code>，等等。特别是在前后端分离的场景下，对<code>权限管理</code>的要求就提升到一个更高的水平</p>
+<p>CabloyJS在EggBornJS的基础上，提供了一套核心业务模块，从而实现了一系列业务支撑特性，并将这些特性进行有机的组合，形成完整而灵活的上层生态架构，从而支持具体的业务开发进程</p>
+<blockquote>
+<p>有了EggBornJS，从此可复用的不仅仅是组件，还有业务模块</p>
+</blockquote>
+<blockquote>
+<p>有了CabloyJS，您就可以快速开发各类业务应用</p>
+</blockquote>
+<h2>信念</h2>
+<blockquote>
+<p>凡是可以用JavaScript来写的应用，最终都会用JavaScript来写 | Atwood定律</p>
+</blockquote>
+<p>相信，Javascript的深度探索者都会被这句名言激发，共同努力，为Javascript生态添砖加瓦，构建更繁荣的应用生态</p>
+<p>CabloyJS正是对这一名言的探索之作。欢迎您也加入CabloyJS的社区生态，一起促进Javascript的繁荣与应用</p>
+<h2>名称的由来</h2>
+<h3>1. EggBorn</h3>
+<p>这个名称的由来比较简单，因为有了Egg(后端框架)，所以就有了EggBorn。有一部动画片叫《天书奇谭》，里面的萌主就叫“蛋生”，我很喜欢看（不小心暴露了年龄😅）</p>
+<h3>2. Cabloy</h3>
+<p>Cabloy来自蓝精灵的魔法咒语，拼对了Cabloy这个单词就会有神奇的效果。同样，CabloyJS是有关化学的魔法，基于模块的组合与生化反应，您将实现您想要的任何东西</p>
+<h2>License</h2>
+<p>MIT</p>
+<h2>相关链接</h2>
+<ul>
+<li>官网: <a href="https://cabloy.com/">https://cabloy.com/</a></li>
+<li>GitHub: <a href="https://github.com/zhennann/cabloy">https://github.com/zhennann/cabloy</a></li>
+</ul>
+
+    
